@@ -83,6 +83,14 @@ module Twilio
         @instance_class.new "#{@uri}/#{response[@instance_id_key]}", @client,
           response
       end
+
+      ##
+      # Send a delete request through twilio API.
+      def destroy(params={})
+        raise "Can't create a resource without a REST Client" unless @client
+        @client.delete @uri, params
+      end
+
     end
   end
 end
